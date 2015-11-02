@@ -8,7 +8,7 @@
 require 'faker'
  
  # Create Wikis
-25.times do
+30.times do
    Wiki.create!(
      title:  Faker::Lorem.sentence,
      body:   Faker::Lorem.paragraph,
