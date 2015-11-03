@@ -17,7 +17,8 @@ class ChargesController < ApplicationController
      description: "Premium Membership! - #{current_user.email}",
      currency: 'usd'
    )
- 
+
+   current_user.update_attribute(:role, 'premium')
    flash[:notice] = "Thanks for upgrading your account!, #{current_user.email}! "
    redirect_to wikis_path(current_user) # or wherever
  
