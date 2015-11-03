@@ -6,12 +6,18 @@ class User < ActiveRecord::Base
 
 after_initialize :set_role
 
+
  def admin?
    role == 'admin'
+ end
+
+ def premium?
+ 	role == 'premium'
  end
  
  def set_role
    role == 'standard'
  	#self.role ||= 'standard'
  end
+
 end
