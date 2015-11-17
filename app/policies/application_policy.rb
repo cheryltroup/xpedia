@@ -7,7 +7,7 @@ class ApplicationPolicy
   end
 
   def index?
-    user.present?
+    false
   end
 
   def show?
@@ -31,7 +31,7 @@ class ApplicationPolicy
   end
 
   def destroy?
-    update?
+    user.present
   end
 
   def scope

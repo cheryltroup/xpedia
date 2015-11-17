@@ -4,12 +4,15 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
 
-after_initialize :set_role
 has_many :wikis
+has_many :collaborators
 
-def set_role
-   role == 'standard'
- end
+after_initialize :set_role
+
+
+#def standard?
+#	role == 'standard'
+# end
 
  def admin?
    role == 'admin'
@@ -17,6 +20,10 @@ def set_role
 
  def premium?
  	role == 'premium'
+ end
+
+ def set_role
+   role == 'standard'
  end
 
 end

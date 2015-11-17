@@ -19,3 +19,4 @@
 # Ignore application configuration
 /config/application.yml
 /congfig/secrets.yml
+/coverage/index.html

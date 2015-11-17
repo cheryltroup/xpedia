@@ -1,10 +1,13 @@
 class WikisController < ApplicationController
   def index
-    @wikis = Wiki.visible_to(current_user)
+    #@wikis = Wiki.all
+    #@wikis = Wiki.visible_to(current_user)
+    @wikis = policy_scope(Wiki)
   end
 
   def show
   	@wiki = Wiki.find(params[:id])
+  
   end
 
   def new
@@ -14,6 +17,7 @@ class WikisController < ApplicationController
  def create
      @wiki = Wiki.new(wiki_params)
      @wiki.user = current_user
+     authorize @wiki 
      if @wiki.save
        flash[:notice] = "Wiki was saved."
        redirect_to @wiki
@@ -41,6 +45,7 @@ class WikisController < ApplicationController
 
   def destroy
     @wiki = Wiki.find(params[:id])
+    authorize @wiki
     @wiki.destroy
     flash[:notice] = "Wiki was successfully deleted."
     redirect_to @wiki

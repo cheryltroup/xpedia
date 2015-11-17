@@ -1,0 +1,19 @@
+<h1>Collaborators</h1>
+
+<table class = 'table'>
+  <% @users.each do |user| %>
+  <tr>
+    <td><%= user.name %></td>
+    <td>
+      <% if @wiki.collaborators == user %> 
+        <%= link_to "Remove", wiki_collaborator_path(@wiki, collaborator), method: :delete, class: 'btn btn-danger' %>
+      <% else %>
+        <%= link_to "Add", wiki_collaborators_path(@wiki, user_id: user.id), method: :post, class: 'btn btn-success' %>
+      <% end %>
+    </td>  
+  </tr>
+  <% end %>
+
+</table>
+
+<%= link_to "Back to Wiki", wiki_path(@wiki), class: 'btn btn-primary' %>

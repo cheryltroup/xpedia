@@ -1,5 +1,12 @@
 <h1>Edit Wiki</h1>
     
   <%= render partial: 'form', locals: { wiki: @wiki} %>
+
+  <h2>Collaborators</h2>
+    <% @wiki.collaborated_users.each do |collaborator| %>
+      <p class="media-heading">
+        <%= collaborator.email %>
+      </p>
+      <% end %>
  
 
