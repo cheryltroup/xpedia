@@ -18,5 +18,6 @@
 
 # Ignore application configuration
 /config/application.yml
-/congfig/secrets.yml
+/config/secrets.yml
 /coverage/index.html
+/config/database.yml

@@ -8,7 +8,7 @@ group :production do
    gem 'pg'
    gem 'rails_12factor'
  end
- 
+
  group :development do
    gem 'sqlite3'
  end
@@ -40,7 +40,6 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # gem 'capistrano-rails', group: :development
   gem 'bootstrap-sass'
   gem 'figaro', '1.0'
-  gem 'faker'
   gem 'pundit'
   gem 'devise'
   gem 'stripe'
@@ -59,7 +58,6 @@ group :development, :test do
   gem 'simplecov', :require => false
   gem 'pry-rails'
   gem 'rspec-rails'
-
+  gem 'factory_girl_rails'
+  gem 'faker'
 end
-
-  
