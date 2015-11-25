@@ -5,6 +5,7 @@ def show
 end
 
 def downgrade
+	
   current_user.wikis.each do |wiki|	
 			wiki.update_attribute(:private, false)
 	 end
