@@ -42,5 +42,18 @@ RSpec.describe WikisController, type: :controller do
     end
   end
 
+ describe "deleting wiki" do
+    it "deletes a wiki" do
+      get :delete, id: @wiki
+      response.should be_success
+    end
+  end
+
+   describe "create wiki" do
+    it "create a wiki" do
+      get :create, id:@wiki
+      response.should be_success
+    end
+  end
   # put in a test for deleting wikis!
 end

@@ -1,7 +1,7 @@
 class WikiPolicy < ApplicationPolicy
 
   def index?
-	  true
+	user.present?
   end
 
   def show?
@@ -31,15 +31,16 @@ class WikiPolicy < ApplicationPolicy
        @user = user
        @scope = scope
      end
-
+ 
   def resolve
        wikis = []
-       if user.role == 'admin'
+       if user.role == 'admin' 
          wikis = scope.all # if the user is an admin, show them all the wikis
-       elsif user.role == 'premium'
+       elsif user.role == 'premium' 
          all_wikis = scope.all
          all_wikis.each do |wiki|
-           if wiki.public? || wiki.user == user || wiki.collaborated_users.include?(user)
+        
+           if wiki.public? || wiki.user == user || wiki.collaborators.include?(user)
              wikis << wiki # if the user is premium, only show them public wikis, or that private wikis they created, or private wikis they are a collaborator on
            end
          end
@@ -47,7 +48,7 @@ class WikiPolicy < ApplicationPolicy
          all_wikis = scope.all
          wikis = []
          all_wikis.each do |wiki|
-           if wiki.public? || wiki.collaborated_users.include?(user)
+           if wiki.public? || wiki.users.include?(user)
              wikis << wiki # only show standard users public wikis and private wikis they are a collaborator on
            end
          end

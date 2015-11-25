@@ -1,18 +1,19 @@
-<h1>Collaborators</h1>
+<h1>Manage Collaborators</h1>
 
 <table class = 'table'>
   <% @wiki_users.each do |user| %>
     <tr>
-      <td><%= user.name %></td>
+      <td><%= user.email %></td>
       <td><%= link_to "Remove", wiki_collaborator_path(@wiki, user), method: :delete, class: 'btn btn-danger' %></td>
     </tr>
   <% end %>
   <% @non_wiki_users.each do |user| %>
     <tr>
-      <td><%= user.name %></td>
+      <td><%= user.email %></td>
       <td><%= link_to "Add", wiki_collaborators_path(@wiki, user_id: user.id), method: :post, class: 'btn btn-success' %></td>
     </tr>
   <% end %>
+  
 </table>
 
 <%= link_to "Back to Wiki", wiki_path(@wiki), class: 'btn btn-primary' %>

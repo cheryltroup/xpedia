@@ -1,23 +1,23 @@
 <h1><%= markdown_to_html @wiki.title %></h1>
 
 <% if policy(@wiki).edit? %>
-
-<%= link_to "Edit", edit_wiki_path(@wiki), class: 'btn btn-success' %>
+	<%= link_to "Edit", edit_wiki_path(@wiki), class: 'btn btn-success' %>
  <% end %>
 
 <%= link_to "Delete", @wiki, method: :delete, class: 'btn btn-danger', data: { confirm: 'Are you sure you want to delete this wiki?' } %>
 
 <p><%= markdown_to_html @wiki.body %></p>
 
-<% if current_user.role == 'admin' || current_user.role == 'premium' %>  
+<% if current_user.role == 'premium' %>  
 
 <%= link_to "Manage Collaborators", wiki_collaborators_path(@wiki), class: 'btn btn-success' %>
  
 <table class = 'table'> 
-
   <% @wiki.collaborated_users.each do |collaborator| %>
-      <tr>
+    <tr>
       <td><%= collaborator.email %></td> 
     </tr>
       <% end %>           
-    </table> <% end %>
+    </table>
+
+  <% end %>

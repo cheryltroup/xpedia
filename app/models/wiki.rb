@@ -1,4 +1,6 @@
 class Wiki < ActiveRecord::Base
+ 
+ 
   belongs_to :user
 
   has_many :collaborators
@@ -12,4 +14,5 @@ class Wiki < ActiveRecord::Base
   def public?
   	!private?
   end
+
 end

@@ -4,23 +4,12 @@
     <% if current_user.role == 'admin' || current_user.role == 'premium' %>
       <div class="form-group">
        <%= f.label :private, class: 'checkbox' do %>
-       <%= f.check_box :private %> Private wiki
+       <%= f.check_box :private %> PRIVATE WIKI
       </div>
     <% end %>
     <% end %>
     
                 
-   <div class="row">
-   <div class="col-md-4">
-     <p>Guidelines for wikis</p>
-     <ul>
-       <li>Make sure .......</li>
-       <li>Don't use .......</li>
-       <li>The incessant .....</li>
-     </ul>
-   </div>
-   </div>
-
     <div class="form-group">
     <%= f.label :title %>
     <%= f.text_field :title, class: 'form-control', placeholder: "Enter Wiki title" %>
