@@ -1,6 +1,6 @@
 class WikisController < ApplicationController
+  before_action :authenticate_user!
   def index
-    #@wikis = Wiki.all
     @wikis = policy_scope(Wiki)
   end
 
@@ -12,7 +12,7 @@ class WikisController < ApplicationController
     @wiki = Wiki.new
   end
 
- def create
+  def create
      @wiki = Wiki.new(wiki_params)
      @wiki.user = current_user
      authorize @wiki 
@@ -23,7 +23,7 @@ class WikisController < ApplicationController
        flash[:error] = "There was an error saving the wiki. Please try again."
        render :new
      end
-   end
+  end
 
   def edit
     @wiki = Wiki.find(params[:id])
@@ -39,7 +39,7 @@ class WikisController < ApplicationController
        flash[:error] = "There was an error saving the wiki. Please try again."
        render :edit
      end
-   end
+  end
 
   def destroy
     @wiki = Wiki.find(params[:id])

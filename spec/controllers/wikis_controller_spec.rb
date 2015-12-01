@@ -34,26 +34,19 @@ RSpec.describe WikisController, type: :controller do
       response.should be_success
     end
   end
-
-  describe "indexing wikis" do
-    it "shows an index of wikis" do
-      get :index
-      response.should be_success
-    end
   end
-
- describe "deleting wiki" do
-    it "deletes a wiki" do
-      get :delete, id: @wiki
-      response.should be_success
-    end
-  end
-
-   describe "create wiki" do
+   describe "creating wiki" do
     it "create a wiki" do
-      get :create, id:@wiki
+      @wiki = Wiki.new(title: 'wiki titles', body: 'wiki body', private: false)
+      get :create
       response.should be_success
     end
+  end
+
+  describe "destroy wiki" do
+    it "destroy a wiki" do
+      get :destroy, id: @wiki
+      response.should be_destroyed
   end
   # put in a test for deleting wikis!
 end

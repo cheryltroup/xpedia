@@ -2,7 +2,7 @@
 
   <% if policy(@wiki).edit? %>
 	<%= link_to "Edit", edit_wiki_path(@wiki), class: 'btn btn-success' %>
-  <% end %>
+     <% end %>
 
   <%= link_to "Delete", @wiki, method: :delete, class: 'btn btn-danger', data: { confirm: 'Are you sure you want to delete this wiki?' } %>
 
@@ -12,7 +12,7 @@
 
 <%= link_to "Manage Collaborators", wiki_collaborators_path(@wiki), class: 'btn btn-success' %>
  
-   <table class = 'table'> 
+  <table class = "table table-bordered">
   <% @wiki.collaborated_users.each do |collaborator| %>
     <tr>
       <td><%= collaborator.email %></td> 
