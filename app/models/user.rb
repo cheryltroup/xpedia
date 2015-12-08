@@ -3,19 +3,17 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
-
 has_many :wikis
 has_many :collaborators
 
 after_initialize :set_role
 
-
-#def standard?
-#	role == 'standard'
-# end
+ def standard?
+	role == 'standard'
+ end
 
  def admin?
-   role == 'admin'
+  role == 'admin'
  end
 
  def premium?

@@ -4,21 +4,15 @@ class CollaboratorsController < ApplicationController
   def index
     @users = User.all
     @wiki = Wiki.find(params[:wiki_id])
-    # get IDs of all collaborators for the current wiki
     collaborators_ids = @wiki.collaborators(:select => :user_id).collect(&:user_id)
-    # Users that match collaborator IDs
     @wiki_users = User.where(id: collaborators_ids)
-    # Users that do not match collaborator IDs
-    #binding.pry
     @non_wiki_users = User.where.not(id: collaborators_ids)
-
   end
 
   def new
   end
 
   def create
-
     @wiki = Wiki.find params[:wiki_id]
     @user = User.find params[:user_id]
     @collaborator = Collaborator.create(user_id: @user.id, wiki_id: @wiki.id)
