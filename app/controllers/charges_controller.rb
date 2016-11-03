@@ -19,13 +19,14 @@ def create
     currency: 'usd'
    )
 
-# @param: customer, the string representation of the customer id
-# @param: amount, an integer represenation of amount 
-# @param: description, the string representation of description 
-# @param: currency, the string representation of currancy
+  # @param: customer, the string representation of the customer id
+  # @param: amount, an integer represenation of amount 
+  # @param: description, the string representation of description 
+  # @param: currency, the string representation of currancy
+
   current_user.update_attribute(:role, 'premium')
-   flash[:notice] = "Thanks for upgrading your account!, #{current_user.email}! "
-   redirect_to wikis_path(current_user) 
+  flash[:notice] = "Thanks for upgrading your account!, #{current_user.email}! "
+  redirect_to wikis_path(current_user) 
 
 # Rescue block catches and displays error 
   rescue Stripe::CardError => e
@@ -37,6 +38,8 @@ end
 #   @param: key, the stirng respresentation of key
 #   @param: description, the string representation of description 
 #   @param: amount, an integer represenation of amount 
+ 
+  def new  
   @stripe_btn_data = {
     key: "#{ Rails.configuration.stripe[:publishable_key] }",
     description: "Premium Membership - #{current_user.name}",
