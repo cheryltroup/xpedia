@@ -40,7 +40,7 @@ end
 #   @param: amount, an integer represenation of amount 
  
   def new  
-  @stripe_btn_data = {
+    @stripe_btn_data = {
     key: "#{ Rails.configuration.stripe[:publishable_key] }",
     description: "Premium Membership - #{current_user.name}",
     amount: amount_for_upgrade
